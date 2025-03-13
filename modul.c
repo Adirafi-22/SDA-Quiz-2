@@ -55,6 +55,25 @@ void insertLast(int value) {
     }
     printElement(value);
 }
+// Insert After
+void insertAfter(int afterValue, int value) {
+    Node *temp = First;
+    while (temp != NULL && temp->info != afterValue) {
+        temp = temp->next;
+    }
+    if (temp == NULL) {
+        printf("Nilai %d tidak ditemukan dalam list!\n", afterValue);
+        return;
+    }
+    Node *newNode = createNode(value);
+    if (newNode == NULL) {
+        printf("Alokasi Memori Gagal!\n");
+        return;
+    }
+    newNode->next = temp->next;
+    temp->next = newNode;
+    printElement(value);
+}
 
 
 
